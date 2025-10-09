@@ -25,6 +25,13 @@ console.log("FOREACH")
 car.forEach(function(item, index){
     console.log((index+1) + ". "+item.merk)
 })
+
+console.log("FOREACH ARROW")
+car.forEach((item, index) => {
+    console.log((index+1) + ". "+item.merk)
+})
+
+
 console.log("MAP")
 var arrMerk = car.map(function(item){
     return item.warna
