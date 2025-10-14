@@ -66,33 +66,102 @@ function execute(nomorAntri){
 // })
 
 
+// console.log("")
+// console.log("PROMISE")
+
+// var isMomHappy = false
+
+// var willGetNewPhone = new Promise(
+//     function(resolve, reject){
+//         if (isMomHappy){
+//             var phone = {
+//                 brand: "Samsung",
+//                 color: "Black"
+//             }
+//             resolve(phone)
+//         }else{
+//             var reason = new Error ('mom is not happy, Promise Rejected')
+//             reject(reason)
+//         }
+//     }
+// )
+
+// function askMom(){
+//     willGetNewPhone.then(function(fulfilled){
+//         console.log(fulfilled)
+//     })
+//     .catch(function(error){
+//         console.log(error.message)
+//     })
+// }
+
+// askMom()
+
+// console.log("")
+// console.log("CONTOH PROMISE LAINNYA")
+
+
+// function periksaDataPasien(nomorIdPasien){
+//     var dataPasien = [
+//         {id:1, nama: "Jhon", jenisKelamin: "Laki-Laki"},
+//         {id:2, nama: "Michael", jenisKelamin: "Laki-Laki"},
+//         {id:3, nama: "Sarah", jenisKelamin: "Perempuan"},
+//         {id:4, nama: "Frank", jenisKelamin: "Laki-Laki"}
+//     ]
+
+//     return new Promise(function (resolve, reject){
+//         var pasien = dataPasien.find(x => x.id === nomorIdPasien)
+
+//         if(pasien === undefined){
+//             reject("Error")
+//         }else{
+//             resolve(pasien)
+//         }
+//     })
+// }
+
+
+// periksaDataPasien(6).then(function(data){
+//     console.log(data)
+// }).catch(function(error){
+//     console.log(error)
+// })
+
+
+
 console.log("")
-console.log("PROMISE")
+console.log("ASYNC/AWAIT")
 
-var isMomHappy = false
-
-var willGetNewPhone = new Promise(
-    function(resolve, reject){
-        if (isMomHappy){
-            var phone = {
-                brand: "Samsung",
-                color: "Black"
-            }
-            resolve(phone)
+function doAsync(){
+    return new Promise(function (resolve, reject){
+        var check = false
+        if (check){
+            resolve("Berhasil")
         }else{
-            var reason = new Error ('mom is not happy, Promise Rejected')
-            reject(reason)
+            reject("Gagal")
         }
-    }
-)
-
-function askMom(){
-    willGetNewPhone.then(function(fulfilled){
-        console.log(fulfilled)
-    })
-    .catch(function(error){
-        console.log(error.message)
     })
 }
 
-askMom()
+// doAsync().then(function(res){
+//     console.log(res)
+// }).catch(function(rej){
+//     console.log(rej)
+// })
+
+// async function hello() {
+//     var result = doAsync()
+//     console.log(result)
+// }
+
+async function hello() {
+    console.log("Try..Catch")
+    try{
+    var result = await doAsync()
+    console.log(result)
+    }catch(err){
+        console.log(err)
+    }
+}
+
+hello()
