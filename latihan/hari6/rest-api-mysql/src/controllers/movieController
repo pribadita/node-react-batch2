@@ -42,7 +42,7 @@ const createMovie = (req, res) => {
 
     let queryText = `INSERT INTO movies (title, year, created_at, updated_at) VALUES("${title}", ${year}, now(), now())`
 
-    connectionPool.query(queryText, (err, data) => {
+    connectionPool.query(queryText, (err) => {
         if(err){
             console.log(err)
             return
@@ -52,4 +52,67 @@ const createMovie = (req, res) => {
     res.json({'message': 'Movie Was Succesfully Created', 'status': 'success'})
 }
 
-module.exports = {createMovie}
+
+
+const readMovie = (req, res) => {
+
+    let queryText = "SELECT * FROM movies"
+    connectionPool.query(queryText, (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+   
+        res.json(data);
+    });
+}
+
+
+const readMovieById = (req, res) => {
+    let {id} = req.params
+
+    let queryText = `SELECT * FROM movies  WHERE id=${id}`
+
+    connectionPool.query(queryText, (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+   
+        res.json(data);
+    });
+}
+
+
+const updateMovie = (req, res) => {
+    let {title, year} = req.body
+    let {id} = req.params
+
+    let queryText = `UPDATE movies SET title="${title}", year=${year}, updated_at=now() 
+                    WHERE id=${id}`
+
+    connectionPool.query(queryText, (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+   
+        res.json({message: "Succefully Update", status:"success"});
+    });
+}
+
+const deleteMovie = (req, res) => {
+    let {id} = req.params
+    let queryText = `DELETE FROM movies WHERE id=${id}`
+
+    connectionPool.query(queryText, (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+   
+        res.json({message: "Succefully Delete", status:"success"});
+    });
+}
+
+module.exports = {createMovie, readMovie, readMovieById, updateMovie, deleteMovie}
