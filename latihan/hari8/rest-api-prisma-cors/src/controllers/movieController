@@ -112,18 +112,29 @@ const updateMovie = async (req, res) => {
     }
 }
 
-// const deleteMovie = (req, res) => {
-//     let {id} = req.params
-//     let queryText = `DELETE FROM movies WHERE id=${id}`
+const deleteMovie = async (req, res) => {
+    let {id} = req.params
+    try{
+    const movies = await prisma.movies.delete({
+        where: {
+            id: Number(id),
+        },
+    })
 
-//     connectionPool.query(queryText, (err, data) => {
-//         if (err) {
-//             console.error(err);
-//             return;
-//         }
-   
-//         res.json({message: "Succefully Delete", status:"success"});
-//     });
-// }
+    res.json({
+        info: null,
+        message: "Movie was successfully Deleted",
+        status : "success"
+    })
+    
+    }catch(err){
+        res.json({
+            info: null,
+            message: err.message,
+            status : "error"
+        })
+    }
+    
+}
 
-module.exports = {createMovie, readMovie, readMovieById, updateMovie}
+module.exports = {createMovie, readMovie, readMovieById, updateMovie, deleteMovie}
