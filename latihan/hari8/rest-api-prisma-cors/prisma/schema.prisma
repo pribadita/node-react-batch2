@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-
 }
 
 datasource db {
@@ -14,21 +13,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model movies {
+model Movies {
   id          Int      @id @default(autoincrement())
   title       String   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   year        Int
-  categories  category?  @relation(fields: [categoryId], references: [id])
+  category    Category?  @relation(fields: [categoryId], references: [id])
   categoryId  Int?
 }
 
 
-model category{
+model Category{
   id          Int       @id @default(autoincrement())
   name        String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  movie       movies[]
+  movies      Movies[]
 }
