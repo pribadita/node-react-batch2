@@ -137,3 +137,5 @@ const deleteCategory = async (req, res) => {
 }
 
 module.exports = {createCategory, readCategory, readCategoryById, updateCategory, deleteCategory}
+
+console.log("test")
