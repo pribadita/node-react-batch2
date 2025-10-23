@@ -1,0 +1,80 @@
+p:not(.par2) {
+    color: rgb(116, 186, 111);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20pt;
+    text-align: justify;
+    text-decoration: underline;
+}
+
+img{
+    height: 50px;
+    width: 50px;
+}
+
+
+h1{
+    color: aqua;
+}
+
+
+div{
+    height: 200px;
+    width: 200px;
+}
+
+
+
+.container{
+    height: 700px;
+    width: 1000px;
+    background-color: antiquewhite;
+    border: solid 2px black;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.satu{
+    background-color: blue;
+    border: solid 2px black;
+    color: white;
+    display: inline-block;
+
+}
+
+.satu:focus{
+    background-color: red;
+}
+
+
+.dua{
+    background-color: red;
+    border: solid 2px black;
+    color: white;
+    display: inline-block;
+
+}
+
+.tiga{
+    background-color: green;
+    border: solid 2px black;
+        color: white;
+    display: inline-block;
+
+    
+}
+
+
+
+
+input:focus{
+    background-color: yellow;
+}
+
+a:active{
+    color: green;
+}
+
+a:hover{
+    color: red;
+}
