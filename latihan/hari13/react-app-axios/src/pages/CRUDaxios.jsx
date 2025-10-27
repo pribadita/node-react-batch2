@@ -124,7 +124,7 @@ function CRUDaxios(){
 
     return(
         <>
-        <h1>CRUD AXIOS</h1>
+        <h1>MOVIES</h1>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
         <form onSubmit={handleSubmit}>
