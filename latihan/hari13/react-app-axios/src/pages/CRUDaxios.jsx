@@ -21,6 +21,7 @@ function CRUDaxios(){
     const fetchDataMovie = () => {
         axios.get('http://localhost:3000/api/movie').then((response) => {
             setDataMovie(response.data.movies)
+            console.log(response.data.movies)
         }).catch(err => {
             console.log(err)
         })
@@ -167,7 +168,7 @@ function CRUDaxios(){
                             <td>{index+1}</td>
                             <td>{item.title}</td>
                             <td>{item.year}</td>
-                            <td>{item.categoryId}</td>
+                            <td>{item.category.name}</td>
                             <td><input type="submit" value="Ubah" className='btn btn-warning' onClick={()=>handleEdit(item.id)}/></td>
                             <td><input type="submit" value="Hapus" className='btn btn-error'/></td>
                         </tr>

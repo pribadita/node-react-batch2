@@ -30,7 +30,21 @@ const createMovie = async (req, res) => {
 
 const readMovie = async (req, res) => {
     try{
-    const movies = await prisma.movies.findMany()
+    const movies = await prisma.movies.findMany({
+        select:{
+            id:true,
+            title:true,
+            year:true,
+            categoryId:true,
+                category:{
+                    select:{
+                        id:true,
+                        name:true
+                    }
+                }
+            
+        }
+    })
         res.json({
             movies,
             message : "Movie was succesfully Fetch",
@@ -40,7 +54,7 @@ const readMovie = async (req, res) => {
     }catch(err){
         res.status(404).json({
             data : null,
-            message : "Movie was Unsuccesfully Fetch",
+            message : err.message,
             status: "Error"
         })
     }
